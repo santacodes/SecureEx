@@ -6,9 +6,10 @@ import (
 	"net/http"
 )
 
-func getinfo(domain string) {
+func GetInfo(domain string) {
 
-	url := fmt.FormatString("https://api.ip2whois.com/v2?key=15EDAD6CFD6CC07185515EDD2364FABC&domain=%s", domain)
+	url := fmt.Sprintf("https://api.ip2whois.com/v2?key=15EDAD6CFD6CC07185515EDD2364FABC&domain=%s", domain)
+	fmt.Println(url)
 
 	req, _ := http.NewRequest("GET", url, nil)
 
