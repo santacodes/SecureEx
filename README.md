@@ -1,2 +1,2 @@
 # SecureEx
-An Extension to detect how safe a website is
+An Extension to detect authenticity and safety of a website
