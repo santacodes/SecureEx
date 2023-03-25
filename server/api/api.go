@@ -87,7 +87,7 @@ type JSONdata struct {
 }
 
 type Domain struct {
-	domain       string
+	domain       string `json:domain`
 	domain_id    string
 	status       string
 	create_date  string
@@ -95,7 +95,7 @@ type Domain struct {
 	expire_date  string
 	domain_age   int
 	whois_server string
-	registrar    []Registrar `json:"data"`
+	registrar    []Registrar
 }
 
 type Registrar struct {
@@ -174,12 +174,14 @@ func GetInfo(domain string) {
 
 	jsondata := []byte(body)
 
-	var domaindata jsondata
+	var domaindata JSONdata
 	check := json.Valid(jsondata)
 	if check {
 		fmt.Println("Checked and Valid Data! ")
 		json.Unmarshal(jsondata, &domaindata)
+		fmt.Println("\n")
 		fmt.Printf("%#v\n", domaindata)
+		fmt.Println("this is the domain age: " + domaindata.domain.status)
 	} else {
 		fmt.Println("Invalid Data")
 	}
