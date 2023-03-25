@@ -40,8 +40,10 @@ func Calc(domain string, age int) float64 {
 
 	var vuln float64 = v1.Domain + v1.Age + v1.Status
 	fmt.Println("\n")
-	fmt.Println("Vulnerability is " + string(int(vuln)))
 
+	fmt.Print("Vulnerability Possibilty is: ")
+	fmt.Print(vuln)
+	fmt.Println("\n")
 	return vuln //The amount of safety
 
 }
