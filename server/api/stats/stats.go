@@ -27,7 +27,7 @@ func Calc(domain string, age int) float64 {
 	//Get all the values in boolean and multiply them with the weights and add the results to get the predicted value
 
 	var v1 = new(vulnerability) //init a node
-
+	fmt.Println("Checking for SSL")
 	conn, err := tls.Dial("tcp", "blog.umesh.wtf:443", nil)
 	if err != nil {
 		panic("Server doesn't support SSL certificate err: " + err.Error())

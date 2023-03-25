@@ -2,13 +2,10 @@ package api
 
 import (
 	"encoding/json"
-	"fmt"
 	"io"
 	"log"
 	"net/http"
-	"os"
 
-	"github.com/joho/godotenv"
 	"github.com/santacodes/SecureEx/server/api/stats"
 )
 
@@ -86,16 +83,8 @@ type Billing struct {
 	Email         string `json:"email"`
 }
 
-func lookup(key string) {
-	url := "https://safebrowsing.googleapis.com/v4/threatMatches:find?key=" + "AIzaSyBjjQzY-Wj9vvb5tcXHWr3N6P5UGAMfxgM"
-	fmt.Println(url)
-}
-
 func GetInfo(domain string) {
-	godotenv.Load(".env")
-	key := os.Getenv("API_KEY")
-	fmt.Println(key)
-	lookup(key)
+
 	url := ("https://api.ip2whois.com/v2?key=15EDAD6CFD6CC07185515EDD2364FABC&domain=" + domain)
 	log.Println("Your Domain is", domain)
 
