@@ -7,6 +7,7 @@ import (
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/santacodes/SecureEx/server/api"
+	"github.com/santacodes/SecureEx/server/database"
 )
 
 type jobj struct {
@@ -17,6 +18,7 @@ type jobj struct {
 
 func main() {
 	fmt.Println("------ SECUREX --------")
+	database.DBMigrate()
 	api.GetInfo("google.com")
 	log.Println("Hosting the Server!")
 
