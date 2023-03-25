@@ -17,7 +17,7 @@ type vulnerability struct {
 	Age    float64
 }
 
-func calc(domain string, age int) float64 {
+func Calc(domain string, age int) float64 {
 	var node = new(weight)
 	node.Domain = 0.5
 	node.Status = 0.3

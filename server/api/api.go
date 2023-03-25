@@ -9,6 +9,7 @@ import (
 	"os"
 
 	"github.com/joho/godotenv"
+	"github.com/santacodes/SecureEx/server/api/stats"
 )
 
 type JSONdata struct {
@@ -121,7 +122,7 @@ func GetInfo(domain string) {
 		json.Unmarshal(jsondata, &domaindata)
 		log.Println("parsed to JSON")
 		log.Println("Domain age for", domain, "is", domaindata.DomainAge, "days")
-		stats.calc(domain, domaindata.DomainAge)
+		stats.Calc(domain, domaindata.DomainAge)
 	} else {
 		log.Println("Invalid Data")
 	}
