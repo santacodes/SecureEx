@@ -20,8 +20,8 @@ type vulnerability struct {
 func Calc(domain string, age int) float64 {
 	var node = new(weight)
 	node.Domain = 0.5
-	node.Status = 0.3
-	node.Age = 0.6
+	node.Status = 0.1
+	node.Age = 0.4
 
 	//Get all the values in boolean and multiply them with the weights and add the results to get the predicted value
 

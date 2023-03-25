@@ -1,54 +1,49 @@
-
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+
+<head>
     <title>SecureEx</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
     <style>
-      body {
-        font-family: Arial, sans-serif;
-        font-size: 16px;
-        padding: 20px; 
-      }
-      #myBox {
-        width: 400px;
-        height: 300px;
-        background-color: #f2f2f2;
-        padding: 20px;
-        box-sizing: border-box;
-        border: 2px solid #007bff;
-        border-radius: 10px;
-      }
-      h1 {
-        font-size: 24px;
-        margin-bottom: 20px;
-      }
-      input[type="text"] {
-        width: 100%;
-        padding: 10px;
-        margin-bottom: 20px;
-      }
-      button {
-        background-color: #007bff;
-        color: white;
-        border: none;
-        padding: 10px;
-        cursor: pointer;
-      }
-      button:hover {
-        background-color: #0056b3;
-      }
+        body,
+        h1 {
+            font-family: "Raleway", sans-serif
+        }
+
+        body,
+        html {
+            height: 400px;
+            width: 500px;
+        }
+
+        .bgimg {
+            background-image: url('/images/background.jpg');
+            min-height: 100%;
+            background-position: center;
+            background-size: cover;
+        }
     </style>
-  </head>
-  <body background="/images/background.jpg">
-    <h1>Authenticity Checker</h1>
-    <div id="myBox">
-      <p>Status</p>
+</head>
+
+<body>
+
+    <div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
+        <div class="w3-display-topleft w3-padding-large w3-xlarge w3-text-yellow">
+            SecureEx
+        </div>
+        <div class="w3-display-middle">
+            <h1 class="w3-jumbo w3-animate-top">Security </h1>
+            <hr class="w3-border-grey" style="margin:auto;width:40%">
+            <p class="w3-large w3-center">Some Number</p>
+        </div>
+        <div class="w3-display-bottomleft w3-padding-large">
+            Made by - <a href="https://github.com/m0nkegang" target="_blank">monkegang</a>
+        </div>
     </div>
-    <a href="">Check out our website</a>
-    <script src="background.js"></script>
-  </body>
+
+</body>
+
 </html>
