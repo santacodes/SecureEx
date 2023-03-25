@@ -1,7 +1,9 @@
 package api
 
 import (
+	"crypto/tls"
 	"encoding/json"
+	"fmt"
 	"io"
 	"log"
 	"net/http"
@@ -84,8 +86,9 @@ type Billing struct {
 }
 
 func GetInfo(domain string) {
+	// check if website already cached in database
 
-	url := ("https://api.ip2whois.com/v2?key=15EDAD6CFD6CC07185515EDD2364FABC&domain=" + domain)
+	url := ("https://api.ip2whois.com/v2?key=96C50BC55507EAD854520B88AA6C55F8&domain=" + domain)
 	log.Println("Your Domain is", domain)
 
 	res, err := http.Get(url)
@@ -114,5 +117,22 @@ func GetInfo(domain string) {
 		stats.Calc(domain, domaindata.DomainAge)
 	} else {
 		log.Println("Invalid Data")
+	}
+}
+
+// check for SSL certificate
+func checkSSLCertificate(domain string) {
+	fmt.Println("Checking for SSL")
+	conn, err := tls.Dial("tcp", domain+":443", nil)
+	if err != nil {
+		fmt.Println("Server doesn't support SSL certificate err: " + err.Error())
+	} else {
+		fmt.Println("Host has SSL Certificate")
+		err = conn.VerifyHostname(domain)
+		if err != nil {
+			fmt.Println("Hostname doesn't match with certificate: " + err.Error())
+		} else {
+			fmt.Println("Hosts name matches with SSL ")
+		}
 	}
 }

@@ -1,7 +1,6 @@
 package stats
 
 import (
-	"crypto/tls"
 	"fmt"
 	"strings"
 )
@@ -27,19 +26,6 @@ func Calc(domain string, age int) float64 {
 	//Get all the values in boolean and multiply them with the weights and add the results to get the predicted value
 
 	var v1 = new(vulnerability) //init a node
-	fmt.Println("Checking for SSL")
-	conn, err := tls.Dial("tcp", domain+":443", nil)
-	if err != nil {
-		fmt.Println("Server doesn't support SSL certificate err: " + err.Error())
-	} else {
-		fmt.Println("Host has SSL Certificate")
-		err = conn.VerifyHostname(domain)
-		if err != nil {
-			fmt.Println("Hostname doesn't match with certificate: " + err.Error())
-		} else {
-			fmt.Println("Hosts name matches with SSL ")
-		}
-	}
 
 	if strings.Contains(domain, "https") {
 		v1.Domain = 0 * (node.Domain)
@@ -53,11 +39,9 @@ func Calc(domain string, age int) float64 {
 	}
 
 	var vuln float64 = v1.Domain + v1.Age + v1.Status
-	fmt.Println("\n")
 
 	fmt.Print("Vulnerability Possibilty is: ")
 	fmt.Print(vuln)
-	fmt.Println("\n")
 	return vuln //The amount of safety
 
 }
