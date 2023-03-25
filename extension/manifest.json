@@ -3,11 +3,21 @@
   "name": "SecureEx",
   "description": "An Extension to detect authenticity and safety of a website",
   "version": "1.0",
+  "icons":{
+    "16":"/images/logo-16.ico",
+    "48":"/images/logo-48.ico",
+    "128":"/images/logo-128.ico"
+  },
   "permissions": [
     "tabs",
     "activeTab"
   ],
   "action": {
+    "default_icon":{
+      "16":"/images/logo-16.ico",
+      "48":"/images/logo-48.ico",
+      "128":"/images/logo-128.ico"
+    },
     "default_popup": "popup.html"
   },
   "background": {
