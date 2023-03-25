@@ -2,9 +2,13 @@ package api
 
 import (
 	"encoding/json"
+	"fmt"
 	"io"
 	"log"
 	"net/http"
+	"os"
+
+	"github.com/joho/godotenv"
 )
 
 /*
@@ -152,6 +156,10 @@ type Billing struct {
 }
 
 func GetInfo(domain string) {
+	godotenv.Load(".env")
+	key := os.Getenv("API_KEY")
+	fmt.Println(key)
+
 	url := ("https://api.ip2whois.com/v2?key=15EDAD6CFD6CC07185515EDD2364FABC&domain=" + domain)
 	log.Println("Your Domain is", domain)
 
