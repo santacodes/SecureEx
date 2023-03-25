@@ -3,7 +3,8 @@ package api
 import (
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
+	"io"
+	"log"
 	"net/http"
 )
 
@@ -78,81 +79,77 @@ DOMAIN RETURN TYPE TEMPLATE
 */
 
 type JSONdata struct {
-	domain      Domain
-	registrant  Registrant
-	admin       Admin
-	tech        Tech
-	billing     Billing
-	nameservers string
-}
-
-type Domain struct {
-	domain       string `json:domain`
-	domain_id    string
-	status       string
-	create_date  string
-	update_date  string
-	expire_date  string
-	domain_age   int
-	whois_server string
-	registrar    []Registrar
+	Domain       string `json:"domain"`
+	Domain_id    string `json:"domain_id"`
+	Status       string `json:"status"`
+	Create_date  string `json:"create_date"`
+	Update_date  string `json:"update_date"`
+	Expire_date  string `json:"expire_date"`
+	Domain_age   string `json:"domain_age"`
+	Whois_server string `json:"whois_server"`
+	Registrar    Registrar
+	Registrant   Registrant
+	Admin        Admin
+	Tech         Tech
+	Billing      Billing
+	NameServers  string `json:"nameservers"`
 }
 
 type Registrar struct {
-	iana_id int
-	name    string
-	url     string
+	Iana_id int    `json:"iana_id"`
+	Name    string `json:"name"`
+	Url     string `json:"url"`
 }
 
 type Registrant struct {
-	name           string
-	organization   string
-	street_address string
-	city           string
-	region         string
-	zip_code       string
-	country        string
-	phone          string
-	fax            string
-	email          string
+	Name           string `json:"name"`
+	Organization   string `json:"organization"`
+	Street_address string `json:"street_address"`
+	City           string `json:"city"`
+	Region         string `json:"region"`
+	Zip_code       string `json:"zip_code"`
+	Country        string `json:"country"`
+	Phone          string `json:"phone"`
+	Fax            string `json:"fax"`
+	Email          string `json:"email"`
 }
 
 type Admin struct {
-	name           string
-	organization   string
-	street_address string
-	city           string
-	region         string
-	zip_code       string
-	country        string
-	phone          string
-	fax            string
-	email          string
+	Name           string `json:"name"`
+	Organization   string `json:"organization"`
+	Street_address string `json:"street_address"`
+	City           string `json:"city"`
+	Region         string `json:"region"`
+	Zip_code       string `json:"zip_code"`
+	Country        string `json:"country"`
+	Phone          string `json:"phone"`
+	Fax            string `json:"fax"`
+	Email          string `json:"email"`
 }
 type Tech struct {
-	name           string
-	organization   string
-	street_address string
-	city           string
-	region         string
-	zip_code       string
-	country        string
-	phone          string
-	fax            string
-	email          string
+	Name           string `json:"name"`
+	Organization   string `json:"organization"`
+	Street_address string `json:"street_address"`
+	City           string `json:"city"`
+	Region         string `json:"region"`
+	Zip_code       string `json:"zip_code"`
+	Country        string `json:"country"`
+	Phone          string `json:"phone"`
+	Fax            string `json:"fax"`
+	Email          string `json:"email"`
 }
 
 type Billing struct {
-	name           string
-	organization   string
-	street_address string
-	city           string
-	region         string
-	zip_code       string
-	country        string
-	phone          string
-	fax            string
-	email          string
+	Name           string `json:"name"`
+	Organization   string `json:"organization"`
+	Street_address string `json:"street_address"`
+	City           string `json:"city"`
+	Region         string `json:"region"`
+	Zip_code       string `json:"zip_code"`
+	Country        string `json:"country"`
+	Phone          string `json:"phone"`
+	Fax            string `json:"fax"`
+	Email          string `json:"email"`
 }
 
 func GetInfo(domain string) {
@@ -163,10 +160,13 @@ func GetInfo(domain string) {
 	fmt.Println("\n")
 	req, _ := http.NewRequest("GET", url, nil)
 
-	res, _ := http.DefaultClient.Do(req)
+	res, err := http.DefaultClient.Do(req)
+	if err != nil {
+		log.Println("Error making http request to ip2whois api", err)
+	}
 
 	defer res.Body.Close()
-	body, _ := ioutil.ReadAll(res.Body)
+	body, _ := io.ReadAll(res.Body)
 
 	fmt.Println(res)
 	fmt.Println("\n")
@@ -181,7 +181,7 @@ func GetInfo(domain string) {
 		json.Unmarshal(jsondata, &domaindata)
 		fmt.Println("\n")
 		fmt.Printf("%#v\n", domaindata)
-		fmt.Println("this is the domain age: " + domaindata.domain.status)
+		fmt.Println("this is the domain age: ", domaindata.Status)
 	} else {
 		fmt.Println("Invalid Data")
 	}
