@@ -18,12 +18,8 @@ type jobj struct {
 
 func main() {
 	fmt.Println("------ SECUREX --------")
-<<<<<<< Updated upstream
 	database.DBMigrate()
 	api.GetInfo("google.com")
-=======
-	api.GetInfo("http://surprise.shopping/")
->>>>>>> Stashed changes
 	log.Println("Hosting the Server!")
 
 	p1 := jobj{

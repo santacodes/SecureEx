@@ -11,6 +11,6 @@ COPY *.go ./
 
 RUN go build -o /docker-gs-ping
 
-EXPOSE 8080
+EXPOSE 3000
 
 CMD [ "/docker-gs-ping" ]
