@@ -1,8 +1,8 @@
 chrome.tabs.onCreated.addListener(function(tab) {
     console.log(tab.url)
     let sub = String(tab.url).split('/')
-    console.log(sub[1])
-    fetch('localhost:3000'+'/'+String(sub[2]), {
+    fetch('http://localhost:3000'+'/'+String(sub[2]), {
+        mode: "no-cors",
         headers: {
            'Accept': 'application/json'
         }
@@ -15,8 +15,8 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
     if (changeInfo.status === "complete") {
         console.log(tab.url)
         let sub = String(tab.url).split('/')
-        console.log(sub[1])
-        fetch('localhost:3000'+'/'+String(sub[2]), {
+        fetch('http://localhost:3000'+'/'+String(sub[2]), {
+         mode: "no-cors",
             headers: {
                'Accept': 'application/json'
     
@@ -31,8 +31,8 @@ chrome.tabs.query({}, function(tabs) {
     tabs.forEach(function(tab) {
         console.log(tab.url);
         let sub = String(tab.url).split('/')
-        console.log(sub[1])
-        fetch('localhost:3000'+'/'+String(sub[2]), {
+        fetch('http://localhost:3000'+'/'+String(sub[2]), {
+            mode: "no-cors",
             headers: {
                'Accept': 'application/json'
             }
