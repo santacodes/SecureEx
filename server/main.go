@@ -10,8 +10,8 @@ import (
 
 type jobj struct {
 	Domain       string `json:"domain"`
-	Authenticity int    `json:authenticity`
-	Safety       int    `json:safety`
+	Authenticity int    `json:"authenticity"`
+	Safety       int    `json:"safety"`
 }
 
 func main() {
