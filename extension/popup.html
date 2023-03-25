@@ -1,12 +1,45 @@
+
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html>
+  <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SecureEx</title>
-</head>
-<body>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        padding: 20px;
+      }
+      h1 {
+        font-size: 24px;
+        margin-bottom: 20px;
+      }
+      input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+      }
+      button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Authenticity Checker</h1>
     <a href="">Check out our website</a>
-</body>
+    <p>Enter a website URL to check if it's safe and authentic:</p>
+    <input type="text" id="urlInput" placeholder="Enter a website URL">
+    <button id="checkButton">Check</button>
+    
+    <script src="popup.js"></script>
+  </body>
 </html>
