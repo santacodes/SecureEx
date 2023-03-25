@@ -34,12 +34,13 @@ func main() {
 		return c.SendString("This is the SecureEX API. To access the API go to ip/\"domain\"")
 	})
 
-	jsonBytes, err := json.Marshal(p1)
-	fmt.Println(string(jsonBytes), err)
 	app.Get("/:name?", func(c *fiber.Ctx) error {
 		if c.Params("name") != "" {
 			//call the api.go here and get the details of the website
 			api.GetInfo(c.Params("name"))
+			p1.Domain = c.Params("name")
+			jsonBytes, err := json.Marshal(p1)
+			fmt.Println(string(jsonBytes), err)
 			return c.SendString(string(jsonBytes))
 			// => JSON String of struct jobj
 		}
