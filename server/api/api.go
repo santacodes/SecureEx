@@ -79,77 +79,77 @@ DOMAIN RETURN TYPE TEMPLATE
 */
 
 type JSONdata struct {
-	Domain       string `json:"domain"`
-	Domain_id    string `json:"domain_id"`
-	Status       string `json:"status"`
-	Create_date  string `json:"create_date"`
-	Update_date  string `json:"update_date"`
-	Expire_date  string `json:"expire_date"`
-	Domain_age   string `json:"domain_age"`
-	Whois_server string `json:"whois_server"`
-	Registrar    Registrar
-	Registrant   Registrant
-	Admin        Admin
-	Tech         Tech
-	Billing      Billing
-	NameServers  string `json:"nameservers"`
+	Domain      string `json:"domain"`
+	DomainId    string `json:"domain_id"`
+	Status      string `json:"status"`
+	CreateDate  string `json:"create_date"`
+	UpdateDate  string `json:"update_date"`
+	ExpireDate  string `json:"expire_date"`
+	DomainAge   int    `json:"domain_age"`
+	WhoIsServer string `json:"whois_server"`
+	Registrar   Registrar
+	Registrant  Registrant
+	Admin       Admin
+	Tech        Tech
+	Billing     Billing
+	NameServers string `json:"nameservers"`
 }
 
 type Registrar struct {
-	Iana_id int    `json:"iana_id"`
-	Name    string `json:"name"`
-	Url     string `json:"url"`
+	IanaId int    `json:"iana_id"`
+	Name   string `json:"name"`
+	Url    string `json:"url"`
 }
 
 type Registrant struct {
-	Name           string `json:"name"`
-	Organization   string `json:"organization"`
-	Street_address string `json:"street_address"`
-	City           string `json:"city"`
-	Region         string `json:"region"`
-	Zip_code       string `json:"zip_code"`
-	Country        string `json:"country"`
-	Phone          string `json:"phone"`
-	Fax            string `json:"fax"`
-	Email          string `json:"email"`
+	Name          string `json:"name"`
+	Organization  string `json:"organization"`
+	StreetAddress string `json:"street_address"`
+	City          string `json:"city"`
+	Region        string `json:"region"`
+	ZipCode       string `json:"zip_code"`
+	Country       string `json:"country"`
+	Phone         string `json:"phone"`
+	Fax           string `json:"fax"`
+	Email         string `json:"email"`
 }
 
 type Admin struct {
-	Name           string `json:"name"`
-	Organization   string `json:"organization"`
-	Street_address string `json:"street_address"`
-	City           string `json:"city"`
-	Region         string `json:"region"`
-	Zip_code       string `json:"zip_code"`
-	Country        string `json:"country"`
-	Phone          string `json:"phone"`
-	Fax            string `json:"fax"`
-	Email          string `json:"email"`
+	Name          string `json:"name"`
+	Organization  string `json:"organization"`
+	StreetAddress string `json:"street_address"`
+	City          string `json:"city"`
+	Region        string `json:"region"`
+	ZipCode       string `json:"zip_code"`
+	Country       string `json:"country"`
+	Phone         string `json:"phone"`
+	Fax           string `json:"fax"`
+	Email         string `json:"email"`
 }
 type Tech struct {
-	Name           string `json:"name"`
-	Organization   string `json:"organization"`
-	Street_address string `json:"street_address"`
-	City           string `json:"city"`
-	Region         string `json:"region"`
-	Zip_code       string `json:"zip_code"`
-	Country        string `json:"country"`
-	Phone          string `json:"phone"`
-	Fax            string `json:"fax"`
-	Email          string `json:"email"`
+	Name          string `json:"name"`
+	Organization  string `json:"organization"`
+	StreetAddress string `json:"street_address"`
+	City          string `json:"city"`
+	Region        string `json:"region"`
+	ZipCode       string `json:"zip_code"`
+	Country       string `json:"country"`
+	Phone         string `json:"phone"`
+	Fax           string `json:"fax"`
+	Email         string `json:"email"`
 }
 
 type Billing struct {
-	Name           string `json:"name"`
-	Organization   string `json:"organization"`
-	Street_address string `json:"street_address"`
-	City           string `json:"city"`
-	Region         string `json:"region"`
-	Zip_code       string `json:"zip_code"`
-	Country        string `json:"country"`
-	Phone          string `json:"phone"`
-	Fax            string `json:"fax"`
-	Email          string `json:"email"`
+	Name          string `json:"name"`
+	Organization  string `json:"organization"`
+	StreetAddress string `json:"street_address"`
+	City          string `json:"city"`
+	Region        string `json:"region"`
+	ZipCode       string `json:"zip_code"`
+	Country       string `json:"country"`
+	Phone         string `json:"phone"`
+	Fax           string `json:"fax"`
+	Email         string `json:"email"`
 }
 
 func GetInfo(domain string) {
@@ -181,7 +181,7 @@ func GetInfo(domain string) {
 		json.Unmarshal(jsondata, &domaindata)
 		fmt.Println("\n")
 		fmt.Printf("%#v\n", domaindata)
-		fmt.Println("this is the domain age: ", domaindata.Status)
+		fmt.Println("this is the domain age: ", domaindata.DomainAge)
 	} else {
 		fmt.Println("Invalid Data")
 	}

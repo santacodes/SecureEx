@@ -21,7 +21,7 @@ func main() {
 	fmt.Println("Fetching results from API")
 	fmt.Println("\n")
 	//pass the domain here
-	api.GetInfo("gsocorganizations.dev")
+	api.GetInfo("google.com")
 	fmt.Println("\n")
 	fmt.Println("Hosting the Server!")
 	//server init
