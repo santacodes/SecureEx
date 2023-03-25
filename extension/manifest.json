@@ -4,19 +4,21 @@
   "description": "An Extension to detect authenticity and safety of a website",
   "version": "1.0",
   "icons":{
-    "16":"/images/logo-16.ico",
-    "48":"/images/logo-48.ico",
-    "128":"/images/logo-128.ico"
+    "16":"/images/logo-16.png",
+    "48":"/images/logo-48.png",
+    "128":"/images/logo-128.png"
   },
   "permissions": [
     "tabs",
-    "activeTab"
+    "activeTab",
+    "storage",
+    "webRequest"
   ],
   "action": {
     "default_icon":{
-      "16":"/images/logo-16.ico",
-      "48":"/images/logo-48.ico",
-      "128":"/images/logo-128.ico"
+      "16":"/images/logo-16.png",
+      "48":"/images/logo-48.png",
+      "128":"/images/logo-128.png"
     },
     "default_popup": "popup.html"
   },
