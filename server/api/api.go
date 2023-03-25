@@ -95,7 +95,7 @@ func GetInfo(domain string) {
 	log.Println("Received response from ip2whois")
 	if res.StatusCode != 200 {
 		log.Println(domain, "does not exist")
-		return
+		// return
 	}
 
 	defer res.Body.Close()

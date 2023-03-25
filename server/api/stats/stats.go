@@ -28,18 +28,17 @@ func Calc(domain string, age int) float64 {
 
 	var v1 = new(vulnerability) //init a node
 	fmt.Println("Checking for SSL")
-	conn, err := tls.Dial("tcp", "blog.umesh.wtf:443", nil)
+	conn, err := tls.Dial("tcp", domain+":443", nil)
 	if err != nil {
-		panic("Server doesn't support SSL certificate err: " + err.Error())
+		fmt.Println("Server doesn't support SSL certificate err: " + err.Error())
 	} else {
 		fmt.Println("Host has SSL Certificate")
-	}
-
-	err = conn.VerifyHostname("blog.umesh.wtf")
-	if err != nil {
-		panic("Hostname doesn't match with certificate: " + err.Error())
-	} else {
-		fmt.Println("Hosts name matches with SSL ")
+		err = conn.VerifyHostname(domain)
+		if err != nil {
+			fmt.Println("Hostname doesn't match with certificate: " + err.Error())
+		} else {
+			fmt.Println("Hosts name matches with SSL ")
+		}
 	}
 
 	if strings.Contains(domain, "https") {

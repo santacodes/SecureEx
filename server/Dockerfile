@@ -5,13 +5,7 @@ WORKDIR /usr/app
 RUN export GO111MODULE=on
 RUN cd /usr/app && git clone https://github.com/santacodes/SecureEx.git
 
-RUN go mod download
-
-COPY *.go ./
-COPY *.db ./
-COPY *.env ./
-
-RUN go build -o /docker-gs-ping
+RUN cd /usr/app/SecureEx/server && go build
 
 EXPOSE 3000
 

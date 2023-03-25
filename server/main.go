@@ -19,7 +19,6 @@ type jobj struct {
 func main() {
 	fmt.Println("------ SECUREX --------")
 	database.DBMigrate()
-	api.GetInfo("google.com")
 	log.Println("Hosting the Server!")
 
 	p1 := jobj{
