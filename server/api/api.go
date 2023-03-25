@@ -121,6 +121,7 @@ func GetInfo(domain string) {
 		json.Unmarshal(jsondata, &domaindata)
 		log.Println("parsed to JSON")
 		log.Println("Domain age for", domain, "is", domaindata.DomainAge, "days")
+		stats.calc(domain, domaindata.DomainAge)
 	} else {
 		log.Println("Invalid Data")
 	}

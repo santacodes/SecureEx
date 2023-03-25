@@ -11,6 +11,12 @@ type weight struct {
 	Age    float64
 }
 
+type vulnerability struct {
+	Domain float64
+	Status float64
+	Age    float64
+}
+
 func calc(domain string, age int) float64 {
 	var node = new(weight)
 	node.Domain = 0.5
@@ -19,18 +25,23 @@ func calc(domain string, age int) float64 {
 
 	//Get all the values in boolean and multiply them with the weights and add the results to get the predicted value
 
+	var v1 = new(vulnerability) //init a node
+
 	if strings.Contains(domain, "https") {
-		fmt.Println("Safe")
+		v1.Domain = 0 * (node.Domain)
 	} else {
-		fmt.Println("unsafe")
+		v1.Domain = 1 * (node.Domain)
 	}
-
 	if age > 1000 {
-		fmt.Println("safe")
+		v1.Age = 0 * (node.Age)
 	} else {
-		fmt.Println("Unsafe")
+		v1.Age = 1 * (node.Age)
 	}
 
-	return 1 //The amount of safety
+	var vuln float64 = v1.Domain + v1.Age + v1.Status
+	fmt.Println("\n")
+	fmt.Println("Vulnerability is " + string(int(vuln)))
+
+	return vuln //The amount of safety
 
 }
