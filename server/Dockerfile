@@ -2,15 +2,11 @@ FROM golang:1.20
 
 WORKDIR /usr/app
 
-COPY go.mod ./
-COPY go.sum ./
+RUN export GO111MODULE=on
+RUN cd /usr/app && git clone https://github.com/santacodes/SecureEx.git
 
-RUN go mod download
-
-COPY *.go ./
-
-RUN go build -o /docker-gs-ping
+RUN cd /usr/app/SecureEx/server && go build
 
 EXPOSE 3000
 
-CMD [ "/docker-gs-ping" ]
+CMD [ "/usr/app/SecureEx/server/server" ]
