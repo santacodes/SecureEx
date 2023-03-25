@@ -2,7 +2,6 @@ package api
 
 import (
 	"encoding/json"
-	"fmt"
 	"io"
 	"log"
 	"net/http"
@@ -153,36 +152,33 @@ type Billing struct {
 }
 
 func GetInfo(domain string) {
-
 	url := ("https://api.ip2whois.com/v2?key=15EDAD6CFD6CC07185515EDD2364FABC&domain=" + domain)
-	fmt.Println("Your Domain is ", domain)
-	fmt.Println("\n")
-	fmt.Println("\n")
-	req, _ := http.NewRequest("GET", url, nil)
+	log.Println("Your Domain is", domain)
 
-	res, err := http.DefaultClient.Do(req)
+	res, err := http.Get(url)
 	if err != nil {
 		log.Println("Error making http request to ip2whois api", err)
+	}
+	log.Println("Received response from ip2whois")
+	if res.StatusCode != 200 {
+		log.Println(domain, "does not exist")
+		return
 	}
 
 	defer res.Body.Close()
 	body, _ := io.ReadAll(res.Body)
-
-	fmt.Println(res)
-	fmt.Println("\n")
-	fmt.Println(string(body))
+	log.Println(string(body))
 
 	jsondata := []byte(body)
 
 	var domaindata JSONdata
 	check := json.Valid(jsondata)
 	if check {
-		fmt.Println("Checked and Valid Data! ")
+		log.Println("Checked and Valid Data!")
 		json.Unmarshal(jsondata, &domaindata)
-		fmt.Println("\n")
-		fmt.Printf("%#v\n", domaindata)
-		fmt.Println("this is the domain age: ", domaindata.DomainAge)
+		log.Println("parsed to JSON")
+		log.Println("Domain age for", domain, "is", domaindata.DomainAge, "days")
 	} else {
-		fmt.Println("Invalid Data")
+		log.Println("Invalid Data")
 	}
 }
