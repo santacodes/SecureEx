@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"log"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/santacodes/SecureEx/server/api"
@@ -15,16 +16,9 @@ type jobj struct {
 }
 
 func main() {
-	fmt.Println("\n")
 	fmt.Println("------ SECUREX --------")
-	fmt.Println("\n")
-	fmt.Println("Fetching results from API")
-	fmt.Println("\n")
-	//pass the domain here
 	api.GetInfo("google.com")
-	fmt.Println("\n")
-	fmt.Println("Hosting the Server!")
-	//server init
+	log.Println("Hosting the Server!")
 
 	p1 := jobj{
 		Domain:       "google.com",
@@ -43,6 +37,7 @@ func main() {
 	app.Get("/:name?", func(c *fiber.Ctx) error {
 		if c.Params("name") != "" {
 			//call the api.go here and get the details of the website
+			api.GetInfo(c.Params("name"))
 			return c.SendString(string(jsonBytes))
 			// => JSON String of struct jobj
 		}
