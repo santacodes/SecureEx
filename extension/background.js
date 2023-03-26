@@ -47,12 +47,12 @@ chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
   tabs.forEach(function(tab) {
     console.log("this is the current tab "+tab.url)
     let sub = String(tab.url).split('/')
-    // document.getElementById("website").innerHTML = String(sub[2])
+    document.getElementById("website").innerHTML = String(sub[2])
     let isSafe = checkWebsite(String(sub[2]));
     if (isSafe) {
-
+      document.getElementById("vuln").innerHTML = "SAFE!"
     } else {
-
+      document.getElementById("vuln").innerHTML = "NOT SAFE!"
     }
   })
 });
