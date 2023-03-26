@@ -67,7 +67,7 @@ func Calc(domain int, age int, status int) bool {
 	fmt.Print("Vulnerability Possibilty is: ")
 	fmt.Print(vuln)
 	//return bool
-	if vuln < 0.5 {
+	if vuln < 0.7 {
 		return false
 	} else {
 		return true
