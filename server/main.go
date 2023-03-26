@@ -18,7 +18,7 @@ type jobj struct {
 
 func main() {
 	fmt.Println("------ SECUREX --------")
-	database.DBMigrate()
+	database.DB = database.DBMigrate()
 	log.Println("Hosting the Server!")
 
 	p1 := jobj{

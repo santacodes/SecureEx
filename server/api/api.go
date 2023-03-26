@@ -9,6 +9,7 @@ import (
 	"net/http"
 
 	"github.com/santacodes/SecureEx/server/api/stats"
+	"github.com/santacodes/SecureEx/server/database"
 )
 
 type JSONdata struct {
@@ -87,6 +88,10 @@ type Billing struct {
 
 func GetInfo(domain string) {
 	// check if website already cached in database
+	database.AlreadyCached(domain)
+
+	// check for ssl verification
+	// check for cloudflare
 
 	url := ("https://api.ip2whois.com/v2?key=96C50BC55507EAD854520B88AA6C55F8&domain=" + domain)
 	log.Println("Your Domain is", domain)
