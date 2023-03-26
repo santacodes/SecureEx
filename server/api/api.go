@@ -87,13 +87,13 @@ type Billing struct {
 	Email         string `json:"email"`
 }
 
-func GetInfo(domain string) {
+// function checks whether website is safe or not
+func GetInfo(domain string) bool {
 	// check if website already cached in database
 	isCached, isSafe := database.AlreadyCached(domain)
 	if isCached {
 		log.Println(domain + " is " + strconv.FormatBool(isSafe))
-		// return isSafe
-		return
+		return isSafe
 	}
 
 	// check for ssl verification
@@ -134,13 +134,16 @@ func GetInfo(domain string) {
 		}
 		if checkSSLCertificate(domain) {
 			database.Append(domain, true)
+			return true
 		} else {
-			stats.Calc(1, domaindata.DomainAge, flag) //have to edit the 3rd parameter
+			isSafe := stats.Calc(1, domaindata.DomainAge, flag) //have to edit the 3rd parameter
+			database.Append(domain, isSafe)
+			return isSafe
 		}
 	} else {
 		log.Println("Invalid Data")
 	}
-
+	return false
 }
 
 // check for SSL certificate
