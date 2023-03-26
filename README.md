@@ -45,9 +45,26 @@ Then Unload files from the cloned repository
   
 ## 🕹️ Working
 
+1. SSL Certificate.domain Checker 
+2. Web Processing and Fetching uping api.go
+3. Neural Network Predictions
+4. Caching Recorded Data and Storing into our databases using Go
+5. Hosting a Dynamic And efficient website using Docker from images of our server.
+6. We can get a Popup about Inauthentic Websites through the JavaScript. 
+
 ## 🚩 Motivation
 
+CyberSecurity is a big issue , with increasing number of websites who could potentially steal your data and aren't verified, these websites are not certified and/or possibly have a risk of malicious activities , these could possibly ruin your experience on the internet .
+It deals with a huge amount of Loses in businesses upto 10.3 Million Dollars a year
+
 ## ✎ Future Plans
+
+1.Improving Accuracy of Results
+We can set a more complex algorithm to make a even more accurate prediction of authenticity 
+
+2.Robust and More Active Parameters and Model Training
+Models can be trained with Large dataset on better parameters can be set by us and fetched by us through apu.go
+
 
 ## Contributors:
 
