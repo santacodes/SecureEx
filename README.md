@@ -13,10 +13,24 @@ An Extension to detect authenticity and safety of a website
   
 ### 🚀 Getting Started 
 ```bash
-git clong https://github.com/santacodes/Securex.git
+git clone https://github.com/santacodes/Securex.git
 ```
 Check if all files are in
 
+## Table of Contents:
+Table of Contents:
+Technology Stack 
+Configurations 
+Demo Video and PPT
+Working 
+Motivation
+Future Plans
+
+## 🛠️ Technology Stack:
+  1) Golang (Backend)
+  2) Javascript (Backend and Frontend)
+  3) Docker
+  4) HTML/CSS
 ### ⚙️ Configuration
 
 Go to the Extensions Tab in your Chrome Extensions and Enable Developer Mode 
@@ -29,15 +43,11 @@ Then Unload files from the cloned repository
 ## Presentation Link:
   <a href="https://docs.google.com/presentation/d/1kAcHYUc53ur1qCUGguzQnOBQ_P-ce2k6mMC5PRjKj0k/edit#slide=id.g6bdca54fc3_0_26784"> PPT link here </a>
   
-  
-## Table of Contents:
+## 🕹️ Working
 
-## Technology Stack:
-  1) Golang (Backend)
-  2) Javascript (Backend and Frontend)
-  3) Docker
-  4) HTML/CSS
-  
+## 🚩 Motivation
+
+## ✎ Future Plans
 
 ## Contributors:
 
