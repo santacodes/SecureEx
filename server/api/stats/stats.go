@@ -2,6 +2,7 @@ package stats
 
 import (
 	"fmt"
+	"math"
 	"strings"
 )
 
@@ -17,31 +18,55 @@ type vulnerability struct {
 	Age    float64
 }
 
-func Calc(domain string, age int) float64 {
+// Sigmoid returns the input values in the range of -1 to 1
+
+func Sigmoid(input []float64) ([]float64, error) {
+	if len(input) == 0 {
+		return []float64{}, nil
+	}
+	s := make([]float64, len(input))
+	for i, v := range input {
+		s[i] = 1 / (1 + math.Exp(-v))
+	}
+	return s, nil
+}
+func Calc(domain string, age int, status string) float64 {
+	//IF THIS FUNCTION IS CALLED THEN SSL IS NOT VERIFIED
+
 	var node = new(weight)
-	node.Domain = 0.5
+	node.Domain = 0.6
 	node.Status = 0.1
 	node.Age = 0.4
 
 	//Get all the values in boolean and multiply them with the weights and add the results to get the predicted value
+	if strings.Contains("status", "cloudflare") {
+		node.Status = 0
+	} else {
+		node.Status = 0.1
+	}
 
 	var v1 = new(vulnerability) //init a node
 
-	if strings.Contains(domain, "https") {
-		v1.Domain = 0 * (node.Domain)
+	if v1.Age < 200 {
+		node.Domain = 0.6
+		node.Age = 0.9
+	} else if (v1.Age < 500) && (v1.Age >= 200) {
+		node.Domain = 0.6
+		node.Age = 0.7
+	} else if (v1.Age >= 500) && (v1.Age < 800) {
+		node.Domain = 0.4
+		node.Age = 0.2
 	} else {
-		v1.Domain = 1 * (node.Domain)
-	}
-	if age > 1000 {
-		v1.Age = 0 * (node.Age)
-	} else {
-		v1.Age = 1 * (node.Age)
+		node.Domain = 0.4
+		node.Age = 0.1
 	}
 
-	var vuln float64 = v1.Domain + v1.Age + v1.Status
-
+	var vuln float64 = v1.Domain*node.Domain + v1.Age*node.Age + v1.Status*node.Status
+	//sigout, err := Sigmoid(vuln)
 	fmt.Print("Vulnerability Possibilty is: ")
 	fmt.Print(vuln)
+	//fmt.Println(sigout)
+	//fmt.Println(err)
 	return vuln //The amount of safety
 
 }

@@ -119,10 +119,11 @@ func GetInfo(domain string) {
 		json.Unmarshal(jsondata, &domaindata)
 		log.Println("parsed to JSON")
 		log.Println("Domain age for", domain, "is", domaindata.DomainAge, "days")
-		stats.Calc(domain, domaindata.DomainAge)
+		stats.Calc(domain, domaindata.DomainAge, domaindata.NameServers)
 	} else {
 		log.Println("Invalid Data")
 	}
+
 }
 
 // check for SSL certificate
