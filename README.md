@@ -46,10 +46,10 @@ Then Unload files from the cloned repository
 ## 🕹️ Working
 
 1. SSL Certificate.domain Checker 
-2. Web Processing and Fetching uping api.go
+2. Web Processing and Fetching domain details using api.go
 3. Neural Network Predictions
-4. Caching Recorded Data and Storing into our databases using Go
-5. Hosting a Dynamic And efficient website using Docker from images of our server.
+4. Caching Recorded Data and Storing into our databases using Go to avoid inefficiency 
+5. Hosting a Dynamic And efficient web app using Docker from images of our server.
 6. We can get a Popup about Inauthentic Websites through the JavaScript. 
 
 ## 🚩 Motivation
