@@ -11,9 +11,8 @@ import (
 )
 
 type jobj struct {
-	Domain       string `json:"domain"`
-	Authenticity int    `json:"authenticity"`
-	Safety       int    `json:"safety"`
+	Domain    string `json:"domain"`
+	Authentic bool   `json:"authentic"`
 }
 
 func main() {
@@ -22,9 +21,8 @@ func main() {
 	log.Println("Hosting the Server!")
 
 	p1 := jobj{
-		Domain:       "http://surprise.shopping/",
-		Authenticity: 50,
-		Safety:       60,
+		Domain:    "http://surprise.shopping/",
+		Authentic: false,
 	}
 
 	app := fiber.New()

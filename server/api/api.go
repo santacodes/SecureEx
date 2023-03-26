@@ -119,7 +119,10 @@ func GetInfo(domain string) {
 		json.Unmarshal(jsondata, &domaindata)
 		log.Println("parsed to JSON")
 		log.Println("Domain age for", domain, "is", domaindata.DomainAge, "days")
-		stats.Calc(domain, domaindata.DomainAge, domaindata.NameServers)
+		if checkSSLCertificate(domain) {
+		} else {
+			stats.Calc(domain, domaindata.DomainAge, domaindata.NameServers)
+		}
 	} else {
 		log.Println("Invalid Data")
 	}
@@ -127,18 +130,21 @@ func GetInfo(domain string) {
 }
 
 // check for SSL certificate
-func checkSSLCertificate(domain string) {
+func checkSSLCertificate(domain string) bool {
 	fmt.Println("Checking for SSL")
 	conn, err := tls.Dial("tcp", domain+":443", nil)
 	if err != nil {
 		fmt.Println("Server doesn't support SSL certificate err: " + err.Error())
+		return false
 	} else {
 		fmt.Println("Host has SSL Certificate")
 		err = conn.VerifyHostname(domain)
 		if err != nil {
 			fmt.Println("Hostname doesn't match with certificate: " + err.Error())
+			return false
 		} else {
 			fmt.Println("Hosts name matches with SSL ")
+			return true
 		}
 	}
 }
