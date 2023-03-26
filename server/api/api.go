@@ -3,10 +3,10 @@ package api
 import (
 	"crypto/tls"
 	"encoding/json"
-	"fmt"
 	"io"
 	"log"
 	"net/http"
+	"strconv"
 	"strings"
 
 	"github.com/santacodes/SecureEx/server/api/stats"
@@ -89,7 +89,12 @@ type Billing struct {
 
 func GetInfo(domain string) {
 	// check if website already cached in database
-	database.AlreadyCached(domain)
+	isCached, isSafe := database.AlreadyCached(domain)
+	if isCached {
+		log.Println(domain + " is " + strconv.FormatBool(isSafe))
+		// return isSafe
+		return
+	}
 
 	// check for ssl verification
 	// check for cloudflare
@@ -126,6 +131,7 @@ func GetInfo(domain string) {
 			flag = 1
 		}
 		if checkSSLCertificate(domain) {
+			database.Append(domain, true)
 		} else {
 			stats.Calc(1, domaindata.DomainAge, flag) //have to edit the 3rd parameter
 		}
@@ -137,19 +143,19 @@ func GetInfo(domain string) {
 
 // check for SSL certificate
 func checkSSLCertificate(domain string) bool {
-	fmt.Println("Checking for SSL")
+	log.Println("Checking for SSL")
 	conn, err := tls.Dial("tcp", domain+":443", nil)
 	if err != nil {
-		fmt.Println("Server doesn't support SSL certificate err: " + err.Error())
+		log.Println("Server doesn't support SSL certificate err: " + err.Error())
 		return false
 	} else {
-		fmt.Println("Host has SSL Certificate")
+		log.Println("Host has SSL Certificate")
 		err = conn.VerifyHostname(domain)
 		if err != nil {
-			fmt.Println("Hostname doesn't match with certificate: " + err.Error())
+			log.Println("Hostname doesn't match with certificate: " + err.Error())
 			return false
 		} else {
-			fmt.Println("Hosts name matches with SSL ")
+			log.Println("Hosts name matches with SSL ")
 			return true
 		}
 	}
