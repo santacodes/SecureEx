@@ -125,6 +125,8 @@ func GetInfo(domain string) {
 		json.Unmarshal(jsondata, &domaindata)
 		log.Println("parsed to JSON")
 		log.Println("Domain age for", domain, "is", domaindata.DomainAge, "days")
+
+		//Check if the domain is using cloudflare or google dns
 		if strings.Contains(string(domaindata.Status), "cloudflare") || strings.Contains(string(domaindata.Status), "google") {
 			flag = 0
 		} else {
