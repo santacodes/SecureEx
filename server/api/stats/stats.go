@@ -3,7 +3,6 @@ package stats
 import (
 	"fmt"
 	"math"
-	"strings"
 )
 
 type weight struct {
@@ -30,7 +29,7 @@ func Sigmoid(input []float64) ([]float64, error) {
 	}
 	return s, nil
 }
-func Calc(domain string, age int, status string) float64 {
+func Calc(domain int, age int, status int) float64 {
 	//IF THIS FUNCTION IS CALLED THEN SSL IS NOT VERIFIED
 
 	var node = new(weight)
@@ -39,29 +38,31 @@ func Calc(domain string, age int, status string) float64 {
 	node.Age = 0.4
 
 	//Get all the values in boolean and multiply them with the weights and add the results to get the predicted value
-	if strings.Contains("status", "cloudflare") {
-		node.Status = 0
-	} else {
-		node.Status = 0.1
-	}
 
 	var v1 = new(vulnerability) //init a node
+	v1.Age = float64(age)
+	v1.Domain = float64(domain)
+	v1.Status = float64(status)
 
 	if v1.Age < 200 {
+		v1.Age = 0.9
 		node.Domain = 0.6
 		node.Age = 0.9
 	} else if (v1.Age < 500) && (v1.Age >= 200) {
+		v1.Age = 0.8
 		node.Domain = 0.6
 		node.Age = 0.7
 	} else if (v1.Age >= 500) && (v1.Age < 800) {
+		v1.Age = 0.4
 		node.Domain = 0.4
 		node.Age = 0.2
 	} else {
+		v1.Age = 0.1
 		node.Domain = 0.4
 		node.Age = 0.1
 	}
 
-	var vuln float64 = v1.Domain*node.Domain + v1.Age*node.Age + v1.Status*node.Status
+	var vuln float64 = (v1.Domain)*(node.Domain) + (v1.Age)*(node.Age) + (v1.Status)*(node.Status)
 	//sigout, err := Sigmoid(vuln)
 	fmt.Print("Vulnerability Possibilty is: ")
 	fmt.Print(vuln)

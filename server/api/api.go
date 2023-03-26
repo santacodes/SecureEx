@@ -7,6 +7,7 @@ import (
 	"io"
 	"log"
 	"net/http"
+	"strings"
 
 	"github.com/santacodes/SecureEx/server/api/stats"
 	"github.com/santacodes/SecureEx/server/database"
@@ -111,7 +112,7 @@ func GetInfo(domain string) {
 	log.Println(string(body))
 
 	jsondata := []byte(body)
-
+	var flag int
 	var domaindata JSONdata
 	check := json.Valid(jsondata)
 	if check {
@@ -119,9 +120,14 @@ func GetInfo(domain string) {
 		json.Unmarshal(jsondata, &domaindata)
 		log.Println("parsed to JSON")
 		log.Println("Domain age for", domain, "is", domaindata.DomainAge, "days")
+		if strings.Contains(string(domaindata.Status), "cloudflare") || strings.Contains(string(domaindata.Status), "google") {
+			flag = 0
+		} else {
+			flag = 1
+		}
 		if checkSSLCertificate(domain) {
 		} else {
-			stats.Calc(domain, domaindata.DomainAge, domaindata.NameServers)
+			stats.Calc(1, domaindata.DomainAge, flag) //have to edit the 3rd parameter
 		}
 	} else {
 		log.Println("Invalid Data")
