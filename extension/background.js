@@ -13,8 +13,8 @@ async function checkWebsite(website) {
     }
 
     const result = await response.json();
-    console.log(result);
-    return result;
+    // console.log(result);
+    return result.authentic;
   } catch (err) {
     console.log(err);
   }
@@ -47,7 +47,12 @@ chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
   tabs.forEach(function(tab) {
     console.log("this is the current tab "+tab.url)
     let sub = String(tab.url).split('/')
-    document.getElementById("website").innerHTML = String(sub[2])
+    // document.getElementById("website").innerHTML = String(sub[2])
+    let isSafe = checkWebsite(String(sub[2]));
+    if (isSafe) {
 
+    } else {
+
+    }
   })
 });
