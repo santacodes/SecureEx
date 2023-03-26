@@ -11,11 +11,23 @@ An Extension to detect authenticity and safety of a website
 ## Introduction:
   Brief description of the project
   
+### 🚀 Getting Started 
+```bash
+git clong https://github.com/santacodes/Securex.git
+```
+Check if all files are in
+
+### ⚙️ Configuration
+
+Go to the Extensions Tab in your Chrome Extensions and Enable Developer Mode 
+
+Then Unload files from the cloned repository
+
 ## Demo Video Link:
-  <a href="https://youtu.be/dQw4w9WgXcQ">https://youtu.be/dQw4w9WgXcQ</a>
+  <a href="https://youtu.be/qPLfsTKs7N0">https://youtu.be/dQw4w9WgXcQ</a>
   
 ## Presentation Link:
-  <a href="https://docs.google.com/presentation/d/1q8HdfDy_9t6_kX5oeyXN7c7jH2A4QKn1Mo07gvxngh8/edit#slide=id.p"> PPT link here </a>
+  <a href="https://docs.google.com/presentation/d/1kAcHYUc53ur1qCUGguzQnOBQ_P-ce2k6mMC5PRjKj0k/edit#slide=id.g6bdca54fc3_0_26784"> PPT link here </a>
   
   
 ## Table of Contents:
