@@ -29,7 +29,7 @@ func Sigmoid(input []float64) ([]float64, error) {
 	}
 	return s, nil
 }
-func Calc(domain int, age int, status int) float64 {
+func Calc(domain int, age int, status int) bool {
 	//IF THIS FUNCTION IS CALLED THEN SSL IS NOT VERIFIED
 
 	var node = new(weight)
@@ -45,19 +45,19 @@ func Calc(domain int, age int, status int) float64 {
 	v1.Status = float64(status)
 
 	if v1.Age < 200 {
-		v1.Age = 0.9
+		v1.Age = 0.6
 		node.Domain = 0.6
 		node.Age = 0.9
 	} else if (v1.Age < 500) && (v1.Age >= 200) {
-		v1.Age = 0.8
+		v1.Age = 0.7
 		node.Domain = 0.6
 		node.Age = 0.7
 	} else if (v1.Age >= 500) && (v1.Age < 800) {
-		v1.Age = 0.4
+		v1.Age = 0.8
 		node.Domain = 0.4
 		node.Age = 0.2
 	} else {
-		v1.Age = 0.1
+		v1.Age = 0.9
 		node.Domain = 0.4
 		node.Age = 0.1
 	}
@@ -66,8 +66,10 @@ func Calc(domain int, age int, status int) float64 {
 	//sigout, err := Sigmoid(vuln)
 	fmt.Print("Vulnerability Possibilty is: ")
 	fmt.Print(vuln)
-	//fmt.Println(sigout)
-	//fmt.Println(err)
-	return vuln //The amount of safety
-
+	//return bool
+	if vuln < 0.5 {
+		return false
+	} else {
+		return true
+	}
 }
