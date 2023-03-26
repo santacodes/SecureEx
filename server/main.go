@@ -34,8 +34,9 @@ func main() {
 	app.Get("/:name?", func(c *fiber.Ctx) error {
 		if c.Params("name") != "" {
 			//call the api.go here and get the details of the website
-			api.GetInfo(c.Params("name"))
+			bl := api.GetInfo(c.Params("name"))
 			p1.Domain = c.Params("name")
+			p1.Authentic = bl
 			jsonBytes, err := json.Marshal(p1)
 			fmt.Println(string(jsonBytes), err)
 			return c.SendString(string(jsonBytes))
