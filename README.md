@@ -5,7 +5,7 @@ An Extension to detect authenticity and safety of a website
 <p align="center">
 </p>
 
-<a href="https://hack36.com"> <img src="https://i.postimg.cc/RFFWF4vg/built-at-hack.jpg" height=24px> </a>
+
 
 
 ## Introduction:
@@ -74,6 +74,3 @@ Team Name: Code_Pirates
 * [Bharat Naik](https://github.com/Naik-Bharat)
 * [Siddhant Gupta](https://github.com/SidWorks01)
 
-
-### Made at:
-<a href="https://hack36.com"> <img src="https://i.postimg.cc/RFFWF4vg/built-at-hack.jpg" height=24px> </a>
