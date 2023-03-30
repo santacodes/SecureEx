@@ -45,7 +45,7 @@ func Calc(domain int, age int, status int) bool {
 	v1.Status = float64(status)
 
 	if v1.Age < 200 {
-		v1.Age = 0.6
+		v1.Age = 0.9
 		node.Domain = 0.6
 		node.Age = 0.9
 	} else if (v1.Age < 500) && (v1.Age >= 200) {
@@ -53,11 +53,11 @@ func Calc(domain int, age int, status int) bool {
 		node.Domain = 0.6
 		node.Age = 0.7
 	} else if (v1.Age >= 500) && (v1.Age < 800) {
-		v1.Age = 0.8
+		v1.Age = 0.55
 		node.Domain = 0.4
 		node.Age = 0.2
 	} else {
-		v1.Age = 0.9
+		v1.Age = 0.2
 		node.Domain = 0.4
 		node.Age = 0.1
 	}
@@ -67,7 +67,7 @@ func Calc(domain int, age int, status int) bool {
 	fmt.Print("Vulnerability Possibilty is: ")
 	fmt.Print(vuln)
 	//return bool
-	if vuln < 0.5 {
+	if vuln < 0.7 {
 		return false
 	} else {
 		return true
