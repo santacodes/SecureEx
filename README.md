@@ -68,7 +68,6 @@ Models can be trained with Large dataset on better parameters can be set by us a
 
 ## Contributors:
 
-Team Name: Code_Pirates
 
 * [Santhosh Sundaram](https://github.com/santacodes)
 * [Bharat Naik](https://github.com/Naik-Bharat)
